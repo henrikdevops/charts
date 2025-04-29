@@ -854,6 +854,21 @@ aggregator:
         @type stdout
       </match>
 
+
+      <match kubernetes.nginx>
+        @type elasticsearch
+        host elasticsearch.kube-system.svc.cluster.local
+        port 9200
+        logstash_format true
+        logstash_prefix nginx-logs
+        logstash_dateformat %Y.%m.%d
+        include_tag_key true
+        type_name _doc
+        reconnect_on_error true
+        reload_on_failure true
+        flush_interval 5s
+      </match>
+
       # Send the logs to the standard output
       <match **>
         @type stdout

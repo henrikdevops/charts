@@ -187,6 +187,7 @@ forwarder:
         @type null
       </match>
 
+
       @include fluentd-inputs.conf
       @include fluentd-output.conf
       {{- if .Values.metrics.enabled }}
@@ -260,6 +261,15 @@ forwarder:
       <match **>
         @type stdout
       </match>
+
+      <label @ERRROR>
+        <match**>
+          @type stdout
+          @id error_output
+        </match>
+      </label>
+
+      
       {{- end }}
     metrics.conf: |
       # Prometheus Exporter Plugin

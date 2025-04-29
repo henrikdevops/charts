@@ -846,6 +846,18 @@ aggregator:
       <match **>
         @type stdout
       </match>
+
+      <match **>
+        @type elasticsearch
+        host elastic01-elasticsearch-master-hl.efk.svc.cluster.local
+        port 9200
+        logstash_prefix fluentd
+        logstash_dateformat %Y.%m.%d
+        include_tag_key true
+        type_name _doc
+      </match>
+
+      
     metrics.conf: |
       # Prometheus Exporter Plugin
       # input plugin that exports metrics

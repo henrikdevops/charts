@@ -844,7 +844,7 @@ aggregator:
 
       # Send the logs to the standard output
       <match **>
-        @type   opensearch
+        @type   elasticsearch
         host    10.152.183.190
         port    9200
         scheme  http

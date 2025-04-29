@@ -844,8 +844,8 @@ aggregator:
 
       # Send the logs to the standard output
       <match **>
-        @type   elasticsearch
-        host    elastic-elasticsearch.efk
+        @type   opensearch
+        host    10.152.183.190
         port    9200
         scheme  http
         logstash_format true
@@ -854,29 +854,7 @@ aggregator:
         type_name _doc
         flush_interval 5s        
       </match>
-   # metrics.conf: |
-   #   # Prometheus Exporter Plugin
-   #   # input plugin that exports metrics
-   #   <source>
-   #     @type prometheus
-   #     port {{ .Values.metrics.service.port }}
-   #   </source>
-#
- #     # input plugin that collects metrics from MonitorAgent
- #     <source>
- #       @type prometheus_monitor
- #       <labels>
- #         host ${hostname}
- #       </labels>
- #     </source>
-#
-#      # input plugin that collects metrics for output plugin
-#      <source>
-#        @type prometheus_output_monitor
-#        <labels>
-#          host ${hostname}
-#        </labels>
-#      </source>
+ 
   ## @param aggregator.port Port the Aggregator container will listen for logs. Leave it blank to ignore.
   ## You can specify other ports in the aggregator.containerPorts parameter
   ##

@@ -540,7 +540,7 @@ config:
   inputs: |
     [INPUT]
         Name          tail
-        Path          /var/log/
+        Path          /var/log/containers
         Tag           kube.*
         Refresh_Interval 5
         Read_from_Head true

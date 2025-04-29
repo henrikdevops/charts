@@ -207,22 +207,20 @@ forwarder:
       <match fluentd.healtcheck>
         @type stdout
       </match>
+
+
       
       # Get the logs from the containers running in the node
       <source>
         @type tail
         path /var/log/containers/*.log
-        # exclude Fluentd logs
         pos_file /opt/bitnami/fluentd/logs/buffers/fluentd-docker.pos
         tag kubernetes.*
         format cri
         read_from_head true
-        <parse>
-          @type json
-          time_key time
-          time_format %Y-%m-%dT%H:%M:%S.%NZ
-        </parse>
       </source>
+
+      
       # enrich with kubernetes metadata
       {{- if or .Values.forwarder.serviceAccount.create .Values.forwarder.serviceAccount.name }}
       <filter kubernetes.**>

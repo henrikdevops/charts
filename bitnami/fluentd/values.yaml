@@ -910,10 +910,10 @@ aggregator:
         port: 9880
         targetPort: http
         protocol: TCP
-      tcp:
-        port: 24224
-        targetPort: tcp
-        protocol: TCP
+    ## tcp:
+    ##   port: 24224
+    ##   targetPort: tcp
+    ##   protocol: TCP
     ## @param aggregator.service.loadBalancerIP loadBalancerIP if service type is `LoadBalancer` (optional, cloud specific)
     ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-loadbalancer
     ##

@@ -210,11 +210,9 @@ forwarder:
         <parse>
           @type json
           time_key time
-          time_format %Y-%m-%dT%H:%M:%S
+          time_format %Y-%m-%dT%H:%M:%S.%NZ
         </parse>
       </source>
-     
-      
       # enrich with kubernetes metadata
       {{- if or .Values.forwarder.serviceAccount.create .Values.forwarder.serviceAccount.name }}
       <filter kubernetes.**>
@@ -844,20 +842,10 @@ aggregator:
         @type stdout
       </match>
 
-
       # Send the logs to the standard output
       <match **>
         @type stdout
       </match>
-
-      <match**>
-        @type elasticsearch
-        host elasticsearch.efk
-        port 9200
-        user elastic
-        password zgYheDxd5mA0KvsNb1W7
-      </match>
-        
     metrics.conf: |
       # Prometheus Exporter Plugin
       # input plugin that exports metrics

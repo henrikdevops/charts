@@ -875,6 +875,7 @@ aggregator:
         port 9200
         logstash_prefix fluentd
         logstash_dateformat %Y.%m.%d
+        format json
         include_tag_key true
         type_name _doc
       </match>

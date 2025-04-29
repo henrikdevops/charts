@@ -272,15 +272,14 @@ forwarder:
         @type stdout
       </match>
 
-      <match **>
-        @type elasticsearch
-        host "elastic01-elasticsearch-master-hl.efk.svc.cluster.local"
-        port 9200
-        logstash_prefix "fluentd"
-        logstash_dateformat "%Y.%m.%d"
-        include_tag_key true
-        type_name "_doc"
-      </match>
+      <source>
+        @type tail
+        path /var/log/containers/*.log
+        pos_file /var/log/td-agent/docker.pos
+        tag docker.*
+        format docker
+      </source>
+
       
       {{- end }}
     metrics.conf: |
@@ -875,7 +874,6 @@ aggregator:
         port 9200
         logstash_prefix fluentd
         logstash_dateformat %Y.%m.%d
-        format json
         include_tag_key true
         type_name _doc
       </match>

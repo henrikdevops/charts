@@ -207,6 +207,9 @@ forwarder:
         exclude_path /var/log/containers/*fluentd*.log
         pos_file /opt/bitnami/fluentd/logs/buffers/fluentd-docker.pos
         tag kubernetes.*
+        format regexp
+        expression /time="(?<time>[^"]+)" level=(?<level>\w+) msg="(?<message>.+)"/
+        
         read_from_head true
         <parse>
           @type json

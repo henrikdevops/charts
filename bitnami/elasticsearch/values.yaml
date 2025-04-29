@@ -314,7 +314,7 @@ security:
 service:
   ## @param service.type Elasticsearch service type
   ##
-  type: ClusterIP
+  type: NodePort
   ## @param service.ports.restAPI Elasticsearch service REST API port
   ## @param service.ports.transport Elasticsearch service transport port
   ##

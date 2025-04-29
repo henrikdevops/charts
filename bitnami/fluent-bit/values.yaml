@@ -569,7 +569,7 @@ config:
     [OUTPUT]
         Name            es
         Match           *
-        Host            10.1.181.60
+        Host            elastic-elasticsearch.efk
         Port            9200
         Index           fluentbit
         Logstash_Format ON

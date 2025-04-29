@@ -539,10 +539,10 @@ config:
   ##
   inputs: |
     [INPUT]
-        Name tail
-        Path /var/log/containers/*.log
-        Exlude_Path /var/log/containers/*fluent-bit*.log
-        Tag kube.*
+        Name          tail
+        Path          /var/log/containers/*.log
+        Exclude_Path  /var/log/containers/*fluent-bit*.log
+        Tag           kube.*
         Refresh_Interval 5
         Read_from_Head true
         parser docker

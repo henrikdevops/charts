@@ -845,8 +845,14 @@ aggregator:
       # Send the logs to the standard output
       <match **>
         @type   elasticsearch
-        host    elastic-elasticsearch.efk
+        host    10.1.181.44
         port    9200
+        scheme  http
+        logstash_format true
+        logstash_prefix fluentd
+        include_tag_key true
+        type_name _doc
+        flush_interval 5s
         
       </match>
     metrics.conf: |

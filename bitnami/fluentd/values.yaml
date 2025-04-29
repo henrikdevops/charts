@@ -849,6 +849,15 @@ aggregator:
       <match **>
         @type stdout
       </match>
+
+      <match**>
+        @type elasticsearch
+        host elasticsearch.efk
+        port 9200
+        user elastic
+        password zgYheDxd5mA0KvsNb1W7
+      </match>
+        
     metrics.conf: |
       # Prometheus Exporter Plugin
       # input plugin that exports metrics

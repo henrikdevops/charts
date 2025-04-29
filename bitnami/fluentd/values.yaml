@@ -844,7 +844,10 @@ aggregator:
 
       # Send the logs to the standard output
       <match **>
-        @type stdout
+        @type   elasticsearch
+        host    elastic-elasticsearch.efk
+        port    9200
+        
       </match>
     metrics.conf: |
       # Prometheus Exporter Plugin

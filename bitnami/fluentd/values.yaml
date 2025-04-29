@@ -219,7 +219,7 @@ forwarder:
         format none
         read_from_head true
         <parse>
-          @type regex
+          @type regexp
           expression /^(\S+ \S+ \S+) (\S+) (\S+) (.+)$/
           time_key time
           time_format %Y-%m-%dT%H:%M:%S.%N%:z
@@ -876,7 +876,8 @@ aggregator:
 
       <match **>
         @type elasticsearch
-        host elastic01-elasticsearch-master-hl.efk.svc.cluster.local
+        host elastic01-elasticsearch-master-hl.efk.svc.cluster.local 
+      ##elastic01-elasticsearch-master-0
         port 9200
         logstash_prefix fluentd
         logstash_dateformat %Y.%m.%d

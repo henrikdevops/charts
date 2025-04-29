@@ -570,7 +570,7 @@ config:
     [OUTPUT]
         Name            es
         Match           *
-        Host            10.1.83.34
+        Host            10.1.181.60
         Port            9200
         Index           fluentbit
         Logstash_Format ON

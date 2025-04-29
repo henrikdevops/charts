@@ -213,17 +213,7 @@ forwarder:
           time_format %Y-%m-%dT%H:%M:%S
         </parse>
       </source>
-      <source>
-        @type tail
-        path /var/log/containers/*.log
-        tag kubernetes.nginx
-        <parse>
-          @type nginx
-          keep_time_key true
-          unmatched_lines
-        </parse>
-      </source>
-
+     
       
       # enrich with kubernetes metadata
       {{- if or .Values.forwarder.serviceAccount.create .Values.forwarder.serviceAccount.name }}
@@ -854,20 +844,6 @@ aggregator:
         @type stdout
       </match>
 
-
-      <match kubernetes.nginx>
-        @type elasticsearch
-        host elasticsearch.kube-system.svc.cluster.local
-        port 9200
-        logstash_format true
-        logstash_prefix nginx-logs
-        logstash_dateformat %Y.%m.%d
-        include_tag_key true
-        type_name _doc
-        reconnect_on_error true
-        reload_on_failure true
-        flush_interval 5s
-      </match>
 
       # Send the logs to the standard output
       <match **>

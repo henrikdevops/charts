@@ -203,9 +203,13 @@ forwarder:
         @type forward
         port 24224
       </source>
-      
-      <match fluentd.healtcheck>
-        @type stdout
+
+      <match **>
+        @type forward
+        <server>
+          host host fluentd-aggregator.default.svc.cluster.local
+          port 24224
+        </server>
       </match>
 
 

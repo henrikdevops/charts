@@ -216,8 +216,14 @@ forwarder:
         path /var/log/containers/*.log
         pos_file /opt/bitnami/fluentd/logs/buffers/fluentd-docker.pos
         tag kubernetes.*
-        format cri
+        format none
         read_from_head true
+        <parse>
+          @type regex
+          expression /^(\S+ \S+ \S+) (\S+) (\S+) (.+)$/
+          time_key time
+          time_format %Y-%m-%dT%H:%M:%S.%N%:z
+        </parse>
       </source>
 
       
@@ -225,6 +231,9 @@ forwarder:
       {{- if or .Values.forwarder.serviceAccount.create .Values.forwarder.serviceAccount.name }}
       <filter kubernetes.**>
         @type kubernetes_metadata
+        format json
+        key_name message
+        remove_prefix true
       </filter>
       {{- end }}
     fluentd-output.conf: |

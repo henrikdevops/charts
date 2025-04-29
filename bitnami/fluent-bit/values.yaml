@@ -568,7 +568,7 @@ config:
   ##
   outputs: |
     [OUTPUT]
-        Name            elasticsearch
+        Name            es
         Match           *
         Host            10.1.83.34
         Port            9200

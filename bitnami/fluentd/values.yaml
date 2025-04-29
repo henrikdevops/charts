@@ -216,12 +216,12 @@ forwarder:
         exclude_path /var/log/containers/*fluentd*.log
         pos_file /opt/bitnami/fluentd/logs/buffers/fluentd-docker.pos
         tag kubernetes.*
+        format json
         read_from_head true
         <parse>
           @type json
           time_key time
           time_format %Y-%m-%dT%H:%M:%S.%NZ
-          format json
         </parse>
       </source>
       # enrich with kubernetes metadata

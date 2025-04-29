@@ -210,7 +210,7 @@ forwarder:
         <parse>
           @type json
           time_key time
-          time_format %Y-%m-%dT%H:%M:%S.%NZ
+          time_format %Y-%m-%dT%H:%M:%S
         </parse>
       </source>
       # enrich with kubernetes metadata

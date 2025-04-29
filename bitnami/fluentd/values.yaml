@@ -187,7 +187,6 @@ forwarder:
         @type null
       </match>
 
-
       @include fluentd-inputs.conf
       @include fluentd-output.conf
       {{- if .Values.metrics.enabled }}
@@ -207,9 +206,6 @@ forwarder:
         exclude_path /var/log/containers/*fluentd*.log
         pos_file /opt/bitnami/fluentd/logs/buffers/fluentd-docker.pos
         tag kubernetes.*
-        format regexp
-        expression /time="(?<time>[^"]+)" level=(?<level>\w+) msg="(?<message>.+)"/
-        
         read_from_head true
         <parse>
           @type json
@@ -264,15 +260,6 @@ forwarder:
       <match **>
         @type stdout
       </match>
-
-      <label @ERRROR>
-        <match**>
-          @type stdout
-          @id error_output
-        </match>
-      </label>
-
-      
       {{- end }}
     metrics.conf: |
       # Prometheus Exporter Plugin
@@ -857,16 +844,31 @@ aggregator:
 
       # Send the logs to the standard output
       <match **>
-        @type   elasticsearch
-        host    es-elasticsearch.efk
-        port    9200
-        logstash_format true
-        logstash_prefix fluentd
-        include_tag_key true
-        type_name _doc
-        flush_interval 5s        
+        @type stdout
       </match>
- 
+    metrics.conf: |
+      # Prometheus Exporter Plugin
+      # input plugin that exports metrics
+      <source>
+        @type prometheus
+        port {{ .Values.metrics.service.port }}
+      </source>
+
+      # input plugin that collects metrics from MonitorAgent
+      <source>
+        @type prometheus_monitor
+        <labels>
+          host ${hostname}
+        </labels>
+      </source>
+
+      # input plugin that collects metrics for output plugin
+      <source>
+        @type prometheus_output_monitor
+        <labels>
+          host ${hostname}
+        </labels>
+      </source>
   ## @param aggregator.port Port the Aggregator container will listen for logs. Leave it blank to ignore.
   ## You can specify other ports in the aggregator.containerPorts parameter
   ##
@@ -909,10 +911,10 @@ aggregator:
         port: 9880
         targetPort: http
         protocol: TCP
-     tcp:
-       port: 24224
-       targetPort: tcp
-       protocol: TCP
+      tcp:
+        port: 24224
+        targetPort: tcp
+        protocol: TCP
     ## @param aggregator.service.loadBalancerIP loadBalancerIP if service type is `LoadBalancer` (optional, cloud specific)
     ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-loadbalancer
     ##

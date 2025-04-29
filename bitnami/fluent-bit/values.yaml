@@ -549,18 +549,18 @@ config:
   ## @param config.filters [string] Set of plugins that can be used to filter, modify, or enrich log data that is processed by Fluent Bit.
   ## https://docs.fluentbit.io/manual/pipeline/filters
   ## Example:
-   filters: |
-     [FILTER]
-         Name              kubernetes
-         Match             kube.*
-         Kube_URL          https://kubernetes.default.svc:443
-         Kube_CA_File      /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-         Kube_Token_File   /var/run/secrets/kubernetes.io/serviceaccount/token
-         kube_Tag_Prefix   kube.var.log.containers
-         Mergre_Log        ON
-         Keep_Log          Off    
-         K8S-Logging.Parser On
-         K8S-Logging.Exclude On
+  filters: |
+    [FILTER]
+        Name              kubernetes
+        Match             kube.*
+        Kube_URL          https://kubernetes.default.svc:443
+        Kube_CA_File      /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        Kube_Token_File   /var/run/secrets/kubernetes.io/serviceaccount/token
+        kube_Tag_Prefix   kube.var.log.containers
+        Mergre_Log        ON
+        Keep_Log          Off    
+        K8S-Logging.Parser On
+        K8S-Logging.Exclude On
   
   filters: ""
   ## @param config.outputs [string] Outputs to send the collected data to different destinations

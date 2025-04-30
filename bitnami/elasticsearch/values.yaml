@@ -15,8 +15,9 @@
 ## @param global.kibanaEnabled Whether or not to enable Kibana
 ##
 image:
-  repository: docker.elastic.co/kibana/kibana
-  tag: "9.0.0"
+  registry: docker.io
+  repository: bitnami/kibana
+  tag: 9.0.0-debian-12-r2
   ## E.g.
   ## imagePullSecrets:
   ##   - myRegistryKeySecretName

@@ -204,7 +204,6 @@ forwarder:
         path /var/log/containers/*.log
         # exclude Fluentd logs
         exclude_path /var/log/containers/*fluentd*.log
-        pos_file /opt/bitnami/fluentd/logs/buffers/fluentd-docker.pos
         tag kubernetes.*
         read_from_head true
         <parse>
@@ -248,12 +247,6 @@ forwarder:
           {{- end }}
         </server>
         {{- end }}
-        <buffer>
-          @type file
-          path /opt/bitnami/fluentd/logs/buffers/logs.buffer
-          flush_thread_count 2
-          flush_interval 5s
-        </buffer>
       </match>
       {{- else }}
       # Send the logs to the standard output
@@ -261,34 +254,7 @@ forwarder:
         @type stdout
       </match>
       {{- end }}
-    metrics.conf: |
-      # Prometheus Exporter Plugin
-      # input plugin that exports metrics
-      <source>
-        @type prometheus
-        port {{ .Values.metrics.service.port }}
-      </source>
-      # input plugin that collects metrics from MonitorAgent
-      <source>
-        @type prometheus_monitor
-        <labels>
-          host ${hostname}
-        </labels>
-      </source>
-      # input plugin that collects metrics for output plugin
-      <source>
-        @type prometheus_output_monitor
-        <labels>
-          host ${hostname}
-        </labels>
-      </source>
-      # input plugin that collects metrics for in_tail plugin
-      <source>
-        @type prometheus_tail_monitor
-        <labels>
-          host ${hostname}
-        </labels>
-      </source>
+    
   ## @param forwarder.extraArgs Extra arguments for the Fluentd command line
   ## ref: https://docs.fluentd.org/deployment/command-line-option
   ##

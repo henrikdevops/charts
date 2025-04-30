@@ -14,10 +14,8 @@
 ## @param global.elasticsearch.service.ports.restAPI Elasticsearch service restAPI port to be used in the Kibana subchart (ignored if kibanaEnabled=false)
 ## @param global.kibanaEnabled Whether or not to enable Kibana
 ##
-image:
-  registry: docker.io
-  repository: bitnami/kibana
-  tag: 9.0.0-debian-12-r2
+global:
+  imageRegistry: ""
   ## E.g.
   ## imagePullSecrets:
   ##   - myRegistryKeySecretName

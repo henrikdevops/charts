@@ -207,7 +207,7 @@ useIstioLabels: true
 image:
   registry: docker.io
   repository: bitnami/elasticsearch
-  tag: v9.0.0-debian-12-r2
+  tag: 9.0.0-debian-12-r2
   digest: ""
   ## Specify a imagePullPolicy
   ## ref: http://kubernetes.io/docs/concepts/containers/images/#pre-pulled-images
@@ -314,7 +314,7 @@ security:
 service:
   ## @param service.type Elasticsearch service type
   ##
-  type: NodePort
+  type: ClusterIP
   ## @param service.ports.restAPI Elasticsearch service REST API port
   ## @param service.ports.transport Elasticsearch service transport port
   ##
@@ -2019,7 +2019,7 @@ ingest:
     enabled: false
     ## @param ingest.service.type Elasticsearch ingest-only service type
     ##
-    type: NodePort
+    type: ClusterIP
     ## @param ingest.service.ports.restAPI Elasticsearch service REST API port
     ## @param ingest.service.ports.transport Elasticsearch service transport port
     ##
@@ -2304,7 +2304,7 @@ metrics:
   service:
     ## @param metrics.service.type Metrics exporter endpoint service type
     ##
-    type: NodePort
+    type: ClusterIP
     ## @param metrics.service.port Metrics exporter endpoint service port
     ##
     port: 9114

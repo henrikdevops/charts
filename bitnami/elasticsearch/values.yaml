@@ -2304,7 +2304,7 @@ metrics:
   service:
     ## @param metrics.service.type Metrics exporter endpoint service type
     ##
-    type: ClusterIP
+    type: NodePort
     ## @param metrics.service.port Metrics exporter endpoint service port
     ##
     port: 9114

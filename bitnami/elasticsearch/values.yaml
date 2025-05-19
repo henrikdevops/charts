@@ -33,7 +33,7 @@ global:
       name: elasticsearch
       ports:
         restAPI: 9200
-  kibanaEnabled: true
+  kibanaEnabled: false
   ## Compatibility adaptations for Kubernetes platforms
   ##
   compatibility:

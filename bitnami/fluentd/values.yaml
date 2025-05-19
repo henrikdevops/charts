@@ -205,13 +205,12 @@ forwarder:
         # exclude Fluentd logs
         exclude_path /var/log/containers/*fluentd*.log
         tag kubernetes.*
-        format json
+        format none
         read_from_head true
         <parse>
           @type json
           time_key time
-          time_format %Y-%m-%dT%H:%M:%S.%NZ
-          regexp /^([\d-]+T[\d:.]+[+-]\d+) stdout (\w+) (.*)$/
+          time_format %Y-%m-%dT%H:%M:%S.%3N%:z
         </parse>
       </source>
       # enrich with kubernetes metadata

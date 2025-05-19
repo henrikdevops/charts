@@ -242,7 +242,7 @@ security:
   ## @param security.fipsMode Configure elasticsearch with FIPS 140 compliant mode
   ## Ref: https://www.elastic.co/guide/en/elasticsearch/reference/current/fips-140-compliance.html
   ##
-  fipsMode: false
+  fipsMode: true
   ## TLS configuration
   ##
   tls:

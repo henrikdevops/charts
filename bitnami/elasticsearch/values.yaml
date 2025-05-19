@@ -314,7 +314,7 @@ security:
 service:
   ## @param service.type Elasticsearch service type
   ##
-  type: ClusterIP
+  type: NodePort
   ## @param service.ports.restAPI Elasticsearch service REST API port
   ## @param service.ports.transport Elasticsearch service transport port
   ##
@@ -477,7 +477,7 @@ master:
   masterOnly: true
   ## @param master.replicaCount Number of master-elegible replicas to deploy
   ##
-  replicaCount: 1
+  replicaCount: 2
   ## @param master.extraRoles Append extra roles to the node role
   ##
   extraRoles: []
@@ -1653,7 +1653,7 @@ ingest:
   enabled: true
   ## @param ingest.replicaCount Number of ingest-only replicas to deploy
   ##
-  replicaCount: 1
+  replicaCount: 2
   ## @param ingest.extraRoles Append extra roles to the node role
   ##
   extraRoles: []
@@ -2019,7 +2019,7 @@ ingest:
     enabled: false
     ## @param ingest.service.type Elasticsearch ingest-only service type
     ##
-    type: ClusterIP
+    type: NodePort
     ## @param ingest.service.ports.restAPI Elasticsearch service REST API port
     ## @param ingest.service.ports.transport Elasticsearch service transport port
     ##
@@ -2304,7 +2304,7 @@ metrics:
   service:
     ## @param metrics.service.type Metrics exporter endpoint service type
     ##
-    type: ClusterIP
+    type: NodePort
     ## @param metrics.service.port Metrics exporter endpoint service port
     ##
     port: 9114

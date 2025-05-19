@@ -230,7 +230,7 @@ image:
 security:
   ## @param security.enabled Enable X-Pack Security settings
   ##
-  enabled: true
+  enabled: false
   ## @param security.elasticPassword Password for 'elastic' user
   ## Ref: https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch#security
   ##
@@ -242,7 +242,7 @@ security:
   ## @param security.fipsMode Configure elasticsearch with FIPS 140 compliant mode
   ## Ref: https://www.elastic.co/guide/en/elasticsearch/reference/current/fips-140-compliance.html
   ##
-  fipsMode: true
+  fipsMode: false
   ## TLS configuration
   ##
   tls:

@@ -251,7 +251,11 @@ forwarder:
       {{- else }}
       # Send the logs to the standard output
       <match **>
-        @type stdout
+        @type elasticsearch
+        host elasticsearch.local
+        port 9200
+        logstash_format true
+        index_name fluentd-logs        
       </match>
       {{- end }}
     

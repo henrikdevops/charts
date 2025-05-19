@@ -230,7 +230,7 @@ image:
 security:
   ## @param security.enabled Enable X-Pack Security settings
   ##
-  enabled: false
+  enabled: true
   ## @param security.elasticPassword Password for 'elastic' user
   ## Ref: https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch#security
   ##
@@ -477,7 +477,7 @@ master:
   masterOnly: true
   ## @param master.replicaCount Number of master-elegible replicas to deploy
   ##
-  replicaCount: 2
+  replicaCount: 1
   ## @param master.extraRoles Append extra roles to the node role
   ##
   extraRoles: []
@@ -850,7 +850,7 @@ master:
   persistentVolumeClaimRetentionPolicy:
     ## @param master.persistentVolumeClaimRetentionPolicy.enabled Enable Persistent volume retention policy for Master StatefulSet
     ##
-    enabled: false
+    enabled: true
     ## @param master.persistentVolumeClaimRetentionPolicy.whenScaled Volume retention behavior when the replica count of the StatefulSet is reduced
     ##
     whenScaled: Retain
@@ -887,7 +887,7 @@ master:
 data:
   ## @param data.replicaCount Number of data-only replicas to deploy
   ##
-  replicaCount: 2
+  replicaCount: 1
   ## @param data.extraRoles Append extra roles to the node role
   ##
   extraRoles: []
@@ -1256,7 +1256,7 @@ data:
   persistentVolumeClaimRetentionPolicy:
     ## @param data.persistentVolumeClaimRetentionPolicy.enabled Enable Persistent volume retention policy for Data StatefulSet
     ##
-    enabled: false
+    enabled: true
     ## @param data.persistentVolumeClaimRetentionPolicy.whenScaled Volume retention behavior when the replica count of the StatefulSet is reduced
     ##
     whenScaled: Retain
@@ -1295,7 +1295,7 @@ data:
 coordinating:
   ## @param coordinating.replicaCount Number of coordinating-only replicas to deploy
   ##
-  replicaCount: 2
+  replicaCount: 1
   ## @param coordinating.extraRoles Append extra roles to the node role
   ## NOTE: In Elasticsearch, all nodes act as coordinators, coordinating-only nodes do not have any other role by default.
   ##
@@ -1653,7 +1653,7 @@ ingest:
   enabled: true
   ## @param ingest.replicaCount Number of ingest-only replicas to deploy
   ##
-  replicaCount: 2
+  replicaCount: 1
   ## @param ingest.extraRoles Append extra roles to the node role
   ##
   extraRoles: []

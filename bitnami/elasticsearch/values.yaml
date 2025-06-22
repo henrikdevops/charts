@@ -207,7 +207,7 @@ useIstioLabels: true
 image:
   registry: docker.io
   repository: bitnami/elasticsearch
-  tag: 8.17.4-debian-12-r0
+  tag: latest
   digest: ""
   ## Specify a imagePullPolicy
   ## ref: http://kubernetes.io/docs/concepts/containers/images/#pre-pulled-images
@@ -230,7 +230,7 @@ image:
 security:
   ## @param security.enabled Enable X-Pack Security settings
   ##
-  enabled: false
+  enabled: true
   ## @param security.elasticPassword Password for 'elastic' user
   ## Ref: https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch#security
   ##
